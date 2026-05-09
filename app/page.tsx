@@ -78,32 +78,27 @@ export default function Page() {
     <div className="min-h-screen" style={{ backgroundColor: "#390a68" }}>
       {/* ───────── HEADER / NAVBAR ───────── */}
       <header
-        className="sticky top-0 z-50 h-20 backdrop-blur-md"
+        className="sticky top-0 z-50 flex flex-col items-center gap-6 p-6 backdrop-blur-md md:h-32 md:flex-row md:justify-between md:px-12"
         style={{ backgroundColor: "rgba(57,10,104,0.85)" }}
       >
-        <nav className="relative mx-auto flex h-full max-w-6xl items-center justify-between px-6">
-          <a href="#ingredients" className={`${BTN} inline-block px-5 py-2 text-xs uppercase`}>
-            Ingredients
-          </a>
+        <a href="#ingredients" className={`${BTN} order-2 inline-block px-5 py-2 text-xs uppercase md:order-1`}>
+          Ingredients
+        </a>
 
-          <a
-            href="#top"
-            className="absolute left-1/2 top-4 z-50 -translate-x-1/2"
-          >
-            <Image
-              src="/Karuna-Website-Logo-Horizontal.png"
-              alt="Karuna Hot Sauce"
-              width={240}
-              height={80}
-              className="object-contain drop-shadow-lg"
-              priority
-            />
-          </a>
+        <a href="#top" className="order-1 shrink-0 md:order-2">
+          <Image
+            src="/Karuna-Website-Logo-Horizontal.png"
+            alt="Karuna Hot Sauce"
+            width={240}
+            height={80}
+            className="h-24 w-auto object-contain drop-shadow-lg md:h-32"
+            priority
+          />
+        </a>
 
-          <a href={BUY_LINK} className={`${BTN} inline-block px-5 py-2 text-xs uppercase`}>
-            Buy a Bottle
-          </a>
-        </nav>
+        <a href={BUY_LINK} className={`${BTN} order-3 inline-block px-5 py-2 text-xs uppercase md:order-3`}>
+          Buy a Bottle
+        </a>
       </header>
 
       {/* ───────── HERO SECTION ───────── */}
@@ -230,11 +225,10 @@ export default function Page() {
             {pricingTiers.map((tier) => (
               <div
                 key={tier.name}
-                className={`relative flex flex-col items-center rounded-2xl border p-8 text-center ${
-                  tier.popular
+                className={`relative flex flex-col items-center rounded-2xl border p-8 text-center ${tier.popular
                     ? "border-[#fec711]/40 scale-[1.03]"
                     : "border-white/10"
-                }`}
+                  }`}
                 style={{ backgroundColor: "#4a1380" }}
               >
                 {/* Popular badge */}
@@ -323,9 +317,9 @@ export default function Page() {
             </p>
           </div>
 
-          <form 
-            action="https://formspree.io/f/xwvynrkq" 
-            method="POST" 
+          <form
+            action="https://formspree.io/f/xwvynrkq"
+            method="POST"
             className="space-y-8"
           >
             <div>
