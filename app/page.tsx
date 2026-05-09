@@ -1,427 +1,90 @@
-"use client";
+export default function LandingPage() {
+  const products = [
+    { name: "Single Bottle", price: "$20", link: "https://buy.stripe.com/test_6oUeVcgGGaGZ21r67n7AI00" },
+    { name: "3-Bottle Pack", price: "$40", link: "https://buy.stripe.com/test_8x23cu7669CV7lLbrH7AI01" },
+    { name: "6-Bottle Half Case", price: "$75", link: "https://buy.stripe.com/test_dRmbJ03TU8yR35v1R77AI02" },
+    { name: "12-Bottle Full Case", price: "$144", link: "https://buy.stripe.com/test_7sY4gyfCC16paxX9jz7AI03" },
+  ];
 
-import Image from "next/image";
+  const ingredients = [
+    { name: "Carrot Juice", img: "/Carrots-painted.png", desc: "Fresh organic cold pressed carrots bring a natural sweetness and silky body — no fillers, no thickeners." },
+    { name: "Agave", img: "/Agave-painted.png", desc: "A slow drizzle of organic agave rounds out the heat without weighing the sauce down." },
+    { name: "Apple Cider Vinegar", img: "/Apple-Cider-painted.png", desc: "Bright, raw, unfiltered acidity that lifts every bite and keeps things lively." },
+    { name: "Pink Salt", img: "/Pink-Salt-painted.png", desc: "Mineral-rich salt to anchor the flavor with a clean finish." },
+    { name: "Habanero", img: "/Habaneros-painted.png", desc: "Sun-ripened habaneros for a glowing, fruit-forward burn." },
+  ];
 
-const BUY_LINK = "#";
-
-const ingredients = [
-  {
-    name: "Carrot Juice",
-    image: "/Carrots-painted.png",
-    description:
-      "Fresh organic cold pressed carrots bring a natural sweetness and silky body — no fillers, no thickeners.",
-  },
-  {
-    name: "Agave",
-    image: "/Agave-painted.png",
-    description:
-      "A slow drizzle of organic agave rounds out the heat without weighing the sauce down.",
-  },
-  {
-    name: "Apple Cider Vinegar",
-    image: "/Apple-Cider-painted.png",
-    description:
-      "Bright, raw, unfiltered acidity that lifts every bite and keeps things lively.",
-  },
-  {
-    name: "Pink Salt",
-    image: "/Pink-Salt-painted.png",
-    description:
-      "Mineral-rich Himalayan pink salt to anchor the flavor with a clean finish.",
-  },
-  {
-    name: "Habanero",
-    image: "/Habaneros-painted.png",
-    description:
-      "Sun-ripened habaneros for a glowing, fruit-forward burn — bold but never punishing.",
-  },
-];
-
-const pricingTiers = [
-  {
-    name: "The Taster",
-    bottles: "1 Bottle",
-    price: "$20",
-    perUnit: null,
-    popular: false,
-    paymentLink: "https://buy.stripe.com/test_6oUeVcgGGaGZ21r67n7AI00",
-  },
-  {
-    name: "The Heat-Seeker",
-    bottles: "3 Bottles",
-    price: "$40",
-    perUnit: "$13.33/ea",
-    popular: true,
-    paymentLink: "https://buy.stripe.com/test_8x23cu7669CV7lLbrH7AI01",
-  },
-  {
-    name: "The Stockpile",
-    bottles: "6 Bottles",
-    price: "$75",
-    perUnit: "$12.50/ea",
-    popular: false,
-    paymentLink: "https://buy.stripe.com/test_dRmbJ03TU8yR35v1R77AI02",
-  },
-];
-
-/* Shared button classes — solid orange with heat glow */
-const BTN =
-  "font-sans font-bold tracking-wider rounded-full bg-[#ff6915] text-white shadow-[0_0_20px_rgba(255,105,21,0.6)] transition hover:bg-[#ff853b] hover:shadow-[0_0_25px_rgba(255,105,21,0.8)]";
-
-/* Display serif font (Yeseva One via CSS var set in layout.tsx) */
-const DISPLAY_FONT: React.CSSProperties = {
-  fontFamily: "var(--font-display), serif",
-};
-
-export default function Page() {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#390a68" }}>
-      {/* ───────── HEADER / NAVBAR ───────── */}
-      <header
-        className="sticky top-0 z-50 h-20 backdrop-blur-md"
-        style={{ backgroundColor: "rgba(57,10,104,0.85)" }}
-      >
-        <nav className="relative mx-auto flex h-full max-w-6xl items-center justify-between px-6">
-          <a href="#ingredients" className={`${BTN} inline-block px-5 py-2 text-xs uppercase`}>
-            Ingredients
-          </a>
+    <main className="min-h-screen bg-[#3C0862] text-white selection:bg-[#F28C28]/30 font-sans">
+      
+      {/* Starry Night Hero Area */}
+      <div className="relative overflow-hidden bg-[url('/Starry-Night-Texture.jpg')] bg-cover bg-center pb-24">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#3C0862]/40 via-[#3C0862]/80 to-[#3C0862] backdrop-blur-[1px]" />
+        
+        {/* Navigation */}
+        <header className="relative flex w-full items-center justify-between p-6 md:px-12 z-10">
+          <a href="#ingredients" className="rounded-full bg-white/10 px-6 py-2 text-xs font-bold uppercase tracking-widest backdrop-blur-xl border border-white/10 hover:bg-white/20 transition-all">Ingredients</a>
+          <img src="/Karuna-Logo-Illustration.png" alt="Karuna" className="h-16 md:h-28 object-contain drop-shadow-2xl" />
+          <a href="#shop" className="rounded-full bg-[#F28C28] px-6 py-2 text-xs font-bold uppercase tracking-widest shadow-xl hover:scale-105 transition-transform">Buy A Bottle</a>
+        </header>
 
-          <a
-            href="#top"
-            className="absolute left-1/2 top-4 z-50 -translate-x-1/2"
-          >
-            <Image
-              src="/Karuna-Website-Logo-Horizontal.png"
-              alt="Karuna Hot Sauce"
-              width={240}
-              height={80}
-              className="object-contain drop-shadow-lg"
-              priority
-            />
-          </a>
-
-          <a href={BUY_LINK} className={`${BTN} inline-block px-5 py-2 text-xs uppercase`}>
-            Buy a Bottle
-          </a>
-        </nav>
-      </header>
-
-      {/* ───────── HERO SECTION ───────── */}
-      <section id="top" className="relative overflow-hidden -mt-px">
-        <div className="relative w-full" style={{ minHeight: "80vh" }}>
-          <Image
-            src="/Karuna website hero image.png"
-            alt="Karuna hot sauce bottles"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-
-          {/* Top gradient overlay */}
-          <div
-            className="absolute inset-x-0 top-0 z-10 h-48"
-            style={{
-              background: "linear-gradient(to bottom, #390a68, transparent)",
-            }}
-          />
-
-          {/* Bottom gradient overlay */}
-          <div
-            className="absolute inset-x-0 bottom-0 z-10 h-64"
-            style={{
-              background: "linear-gradient(to top, #390a68, transparent)",
-            }}
-          />
-        </div>
-
-        {/* Hero text — kept at pt-[85px] as requested */}
-        <div className="relative z-20 -mt-24 pb-16 pt-[85px] text-center">
-          <p
-            className="mb-3 text-sm font-bold uppercase tracking-[0.35em]"
-            style={{ color: "#fec711" }}
-          >
-            Small Batch · Big Heat
-          </p>
-          <h1
-            className="mx-auto max-w-3xl text-5xl font-black leading-tight text-white sm:text-7xl"
-            style={DISPLAY_FONT}
-          >
-            Hot Sauce with{" "}
-            <span style={{ color: "#fec711" }}>Soul.</span>
+        {/* Hero Content */}
+        <section className="relative flex flex-col items-center px-6 pt-16 text-center z-10">
+          <div className="relative group max-w-5xl mb-12">
+            <img src="/Karuna-3-bottles.jpg" alt="Hot Sauce with Soul" className="rounded-[3rem] shadow-[0_0_100px_rgba(0,0,0,0.5)] transition-transform duration-1000 group-hover:scale-[1.01]" />
+            <div className="absolute -inset-10 -z-10 rounded-full bg-[#F28C28]/20 blur-[120px] opacity-40 animate-pulse" />
+          </div>
+          <p className="text-[#F28C28] font-bold tracking-[0.4em] uppercase text-sm mb-6 drop-shadow-md">Small Batch • Big Heat</p>
+          <h1 className="text-6xl font-black tracking-tighter md:text-9xl italic leading-none drop-shadow-2xl">
+            HOT SAUCE WITH <span className="text-[#F28C28] not-italic">SOUL.</span>
           </h1>
-          <div className="mt-10 flex justify-center">
-            <a href={BUY_LINK} className={`${BTN} inline-block px-10 py-4 text-base uppercase`}>
-              Buy a Bottle
-            </a>
-          </div>
+        </section>
+      </div>
+
+      {/* Five Ingredients Section (The Vertical Layout) */}
+      <section id="ingredients" className="max-w-5xl mx-auto px-6 py-32 relative">
+        <div className="text-center mb-32">
+          <h2 className="text-5xl md:text-7xl font-black uppercase text-[#F28C28] mb-4 tracking-tighter">Five Ingredients.</h2>
+          <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-[0.3em] opacity-50">Zero Shortcuts.</h3>
+        </div>
+        
+        <div className="space-y-40">
+          {ingredients.map((item, index) => (
+            <div key={item.name} className={`flex flex-col md:flex-row items-center gap-16 ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
+              <div className="w-64 h-64 bg-gradient-to-br from-white/10 to-transparent border border-white/10 rounded-[4rem] p-10 backdrop-blur-md shadow-2xl flex items-center justify-center shrink-0 transition-transform hover:rotate-3">
+                <img src={item.img} alt={item.name} className="w-full h-full object-contain drop-shadow-2xl" />
+              </div>
+              <div className="text-center md:text-left flex-1">
+                <h4 className="text-4xl md:text-5xl font-black uppercase mb-6 text-[#F28C28] tracking-tight">{item.name}</h4>
+                <p className="text-xl md:text-2xl text-white/70 max-w-xl leading-relaxed font-medium">{item.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* ───────── INGREDIENTS SECTION ───────── */}
-      <section id="ingredients" className="py-24" style={{ backgroundColor: "#390a68" }}>
-        <div className="mx-auto max-w-4xl px-6">
-          <div className="text-center">
-            <h2
-              className="text-4xl font-black sm:text-6xl"
-              style={{ ...DISPLAY_FONT, color: "#fec711" }}
-            >
-              Five Ingredients.
-            </h2>
-            <h3
-              className="mt-5 text-3xl font-black sm:text-5xl"
-              style={{ ...DISPLAY_FONT, color: "#ff6915" }}
-            >
-              Zero Shortcuts.
-            </h3>
-          </div>
-
-          {/* Ingredient cards — tighter spacing, max-w-fit mx-auto, strict row layout */}
-          <ul className="mx-auto mt-16 max-w-fit space-y-4">
-            {ingredients.map((item) => (
-              <li
-                key={item.name}
-                className="flex flex-row items-center gap-6 sm:gap-8 rounded-2xl p-4 sm:p-5"
-              >
-                <div
-                  className="flex h-24 w-24 sm:h-28 sm:w-28 shrink-0 items-center justify-center rounded-xl"
-                  style={{ backgroundColor: "#4a1380" }}
-                >
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    width={100}
-                    height={100}
-                    className="h-20 w-20 sm:h-24 sm:w-24 object-contain"
-                  />
+      {/* Shop Grid (The 4-Tier Pricing) */}
+      <section id="shop" className="max-w-7xl mx-auto px-6 py-40">
+        <div className="bg-black/30 border border-white/5 rounded-[5rem] p-12 md:p-24 backdrop-blur-3xl shadow-[0_0_100px_rgba(0,0,0,0.3)]">
+          <h2 className="text-center text-4xl md:text-6xl font-black uppercase mb-20 tracking-tighter">Choose Your Batch</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {products.map((product) => (
+              <div key={product.name} className="flex flex-col bg-white/5 border border-white/10 rounded-[3rem] p-10 text-center backdrop-blur-sm hover:border-[#F28C28]/50 transition-all hover:-translate-y-2 group">
+                <h3 className="text-lg font-bold uppercase tracking-widest mb-2 opacity-50 group-hover:opacity-100 transition-opacity">{product.name}</h3>
+                <p className="text-5xl font-black text-[#F28C28] mb-10 tracking-tighter">{product.price}</p>
+                <div className="mt-auto">
+                  <a href={product.link} className="inline-block w-full rounded-full bg-[#F28C28] py-5 text-sm font-bold uppercase tracking-widest text-white shadow-2xl transition-all hover:brightness-110 active:scale-95">Buy Now</a>
                 </div>
-
-                <div className="text-left">
-                  <h4
-                    className="text-2xl font-bold sm:text-3xl"
-                    style={{ ...DISPLAY_FONT, color: "#ff6915" }}
-                  >
-                    {item.name}
-                  </h4>
-                  <p
-                    className="mt-2 max-w-[350px] text-base leading-relaxed"
-                    style={{ color: "rgba(255,255,255,0.85)" }}
-                  >
-                    {item.description}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* ───────── PRICING SECTION ───────── */}
-      <section id="pricing" className="py-24" style={{ backgroundColor: "#390a68" }}>
-        <div className="mx-auto max-w-5xl px-6">
-          <h2
-            className="text-center text-4xl font-black sm:text-6xl"
-            style={{ ...DISPLAY_FONT, color: "#fec711" }}
-          >
-            Stock Up &amp; Save
-          </h2>
-
-          <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
-            {pricingTiers.map((tier) => (
-              <div
-                key={tier.name}
-                className={`relative flex flex-col items-center rounded-2xl border p-8 text-center ${
-                  tier.popular
-                    ? "border-[#fec711]/40 scale-[1.03]"
-                    : "border-white/10"
-                }`}
-                style={{ backgroundColor: "#4a1380" }}
-              >
-                {/* Popular badge */}
-                {tier.popular && (
-                  <div
-                    className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full px-5 py-1 text-xs font-bold uppercase tracking-widest"
-                    style={{ backgroundColor: "#fec711", color: "#390a68" }}
-                  >
-                    Most Popular
-                  </div>
-                )}
-
-                {/* Tier name */}
-                <h3
-                  className="mt-2 text-2xl font-bold"
-                  style={{ ...DISPLAY_FONT, color: "#fec711" }}
-                >
-                  {tier.name}
-                </h3>
-
-                {/* Bottles */}
-                <p
-                  className="mt-3 text-sm font-medium uppercase tracking-widest"
-                  style={{ color: "rgba(255,255,255,0.6)" }}
-                >
-                  {tier.bottles}
-                </p>
-
-                {/* Price */}
-                <p className="mt-4 text-5xl font-black text-white">
-                  {tier.price}
-                </p>
-
-                {/* Per-unit price */}
-                {tier.perUnit && (
-                  <p
-                    className="mt-1 text-sm font-medium"
-                    style={{ color: "#ff6915" }}
-                  >
-                    {tier.perUnit}
-                  </p>
-                )}
-
-                {/* CTA */}
-                <a
-                  href={tier.paymentLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${BTN} mt-8 w-full px-6 py-3 text-sm uppercase text-center block`}
-                >
-                  Select Pack
-                </a>
               </div>
             ))}
           </div>
-
-          {/* Full Case Anchor */}
-          <div className="mt-16 text-center">
-            <p
-              className="mb-3 text-sm font-bold uppercase tracking-widest"
-              style={{ color: "#fec711" }}
-            >
-              BEST VALUE ($12/bottle)
-            </p>
-            <a
-              href="https://buy.stripe.com/test_7sY4gyfCC16paxX9jz7AI03"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${BTN} inline-block px-10 py-5 text-lg uppercase`}
-            >
-              Buy a Full Case (12 Bottles) for $144
-            </a>
-          </div>
         </div>
       </section>
 
-      {/* ───────── CONTACT FORM SECTION ───────── */}
-      <section id="contact" className="py-24 bg-[#390a68] flex justify-center px-6">
-        <div className="w-full max-w-2xl">
-          <div className="text-center mb-12">
-            <h2 className="text-5xl font-normal text-[#ff6915] font-[var(--font-display)] mb-4">
-              Questions or Feedback?
-            </h2>
-            <p className="text-white/80 text-xl font-light">
-              Drop us a line — we read every message.
-            </p>
-          </div>
-
-          <form 
-            action="https://formspree.io/f/xwvynrkq" 
-            method="POST" 
-            className="space-y-8"
-          >
-            <div>
-              <label htmlFor="name" className="block text-sm font-bold text-white/60 uppercase tracking-widest mb-3">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Your name"
-                className="w-full bg-[#4a1380] border-none rounded-lg p-5 text-white placeholder-white/30 focus:ring-2 focus:ring-[#ff6915] transition-all"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="email" className="block text-sm font-bold text-white/60 uppercase tracking-widest mb-3">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                placeholder="you@example.com"
-                className="w-full bg-[#4a1380] border-none rounded-lg p-5 text-white placeholder-white/30 focus:ring-2 focus:ring-[#ff6915] transition-all"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block text-sm font-bold text-white/60 uppercase tracking-widest mb-3">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows={6}
-                placeholder="Tell us what's on your mind..."
-                className="w-full bg-[#4a1380] border-none rounded-lg p-5 text-white placeholder-white/30 focus:ring-2 focus:ring-[#ff6915] transition-all resize-none"
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              className="w-full bg-[#ff6915] text-white font-sans font-bold py-5 rounded-full text-lg uppercase tracking-widest shadow-[0_0_20px_rgba(255,105,21,0.6)] hover:shadow-[0_0_30px_rgba(255,105,21,0.8)] hover:bg-[#ff853b] transition-all active:scale-[0.98]"
-            >
-              Send Message
-            </button>
-          </form>
-        </div>
-      </section>
-
-      {/* ───────── FOOTER ───────── */}
-      <footer style={{ backgroundColor: "#2a074c" }}>
-        <div className="mx-auto max-w-4xl px-6 py-16 text-center">
-          {/* Footer logo */}
-          <div className="flex justify-center">
-            <Image
-              src="/Karuna-Website-Logo-Horizontal.png"
-              alt="Karuna Hot Sauce"
-              width={160}
-              height={53}
-              className="object-contain opacity-80"
-            />
-          </div>
-
-          {/* Footer nav links */}
-          <nav className="mt-8 flex flex-wrap items-center justify-center gap-8">
-            {["Ingredients", "Buy a Bottle"].map((link) => (
-              <a
-                key={link}
-                href={link === "Ingredients" ? "#ingredients" : BUY_LINK}
-                className="font-sans text-sm font-medium uppercase tracking-widest text-white/70 transition hover:text-white"
-              >
-                {link}
-              </a>
-            ))}
-          </nav>
-
-          {/* Divider */}
-          <div
-            className="mx-auto my-8 h-px w-48"
-            style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
-          />
-
-          {/* Copyright */}
-          <p
-            className="font-sans text-xs tracking-wide"
-            style={{ color: "rgba(255,255,255,0.35)" }}
-          >
-            © {new Date().getFullYear()} Karuna Hot Sauce. Made with heat &amp;
-            care.
-          </p>
-        </div>
+      {/* Footer */}
+      <footer className="py-20 text-center opacity-30 text-xs font-bold uppercase tracking-[0.5em]">
+        Karuna Hot Sauce &copy; 2026 • Redding, CA
       </footer>
-    </div>
+    </main>
   );
 }
