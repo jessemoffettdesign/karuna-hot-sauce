@@ -44,7 +44,7 @@ const pricingTiers = [
     price: "$20",
     perUnit: null,
     popular: false,
-    paymentLink: "https://buy.stripe.com/test_6oUeVcgGGaGZ21r67n7AI00",
+    paymentLink: "https://buy.stripe.com/5kQ14p6FFaUbf8FegkgUM03",
   },
   {
     name: "The Heat-Seeker",
@@ -52,7 +52,7 @@ const pricingTiers = [
     price: "$40",
     perUnit: "$13.33/ea",
     popular: true,
-    paymentLink: "https://buy.stripe.com/test_8x23cu7669CV7lLbrH7AI01",
+    paymentLink: "https://buy.stripe.com/cNi3cxe875zRe4B8W0gUM02",
   },
   {
     name: "The Stockpile",
@@ -60,7 +60,7 @@ const pricingTiers = [
     price: "$75",
     perUnit: "$12.50/ea",
     popular: false,
-    paymentLink: "https://buy.stripe.com/test_dRmbJ03TU8yR35v1R77AI02",
+    paymentLink: "https://buy.stripe.com/8x2fZj4xxgevbWtb48gUM01",
   },
 ];
 
@@ -294,7 +294,7 @@ export default function Page() {
               BEST VALUE ($12/bottle)
             </p>
             <a
-              href="https://buy.stripe.com/test_7sY4gyfCC16paxX9jz7AI03"
+              href="https://buy.stripe.com/aFa5kF2ppaUbd0x4FKgUM00"
               target="_blank"
               rel="noopener noreferrer"
               className={`${BTN} inline-block px-10 py-5 text-lg uppercase`}
