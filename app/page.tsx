@@ -226,8 +226,8 @@ export default function Page() {
               <div
                 key={tier.name}
                 className={`relative flex flex-col items-center rounded-2xl border p-8 text-center ${tier.popular
-                    ? "border-[#fec711]/40 scale-[1.03]"
-                    : "border-white/10"
+                  ? "border-[#fec711]/40 scale-[1.03]"
+                  : "border-white/10"
                   }`}
                 style={{ backgroundColor: "#4a1380" }}
               >
